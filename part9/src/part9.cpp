@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : test.cpp
-// Author      : 
+// Name        : part9.cpp
+// Author      : Roman V. Fedorin
 // Version     :
 // Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Description : Lesson 9, ANSI-style
 //============================================================================
 
 #include <iostream>
@@ -11,11 +11,25 @@
 using namespace std;
 
 class Human{
-	int age = 0;
+	int age;
+
+
 
 	public:
-		string name = "NoName";
+		string name;
 
+		Human(){
+			age = 0;
+			name = "NoName";
+		}
+
+
+		Human(string nameNew, int age = 25)
+		:age(age)
+		{
+			name = nameNew;
+			cout << "Created " << name << " " << age << endl;
+		}
 
 		void SetAge(int newAge){
 			age = newAge;
@@ -40,18 +54,17 @@ class Human{
 int main()
 {
 	Human* man = new Human();
-	Human* woman = new Human();
+	Human* woman = new Human("Sonya");
 	Human newMan;
+	Human DiMan = Human("Di", 33);
 
 	man->name = "Alan";
 	man->SetAge(34);
 	man->IntroduceSelf();
 
-	woman->name = "Sonya";
-	woman->SetAge(23);
 	woman->IntroduceSelf();
-
 	newMan.IntroduceSelf();
+	DiMan.IntroduceSelf();
 
 	delete man;
 	delete woman;
