@@ -12,8 +12,7 @@ using namespace std;
 
 class Human{
 	int age;
-
-
+	string* motto;
 
 	public:
 		string name;
@@ -21,14 +20,24 @@ class Human{
 		Human(){
 			age = 0;
 			name = "NoName";
+
+			motto = new string("My motto!");
 		}
 
 
 		Human(string nameNew, int age = 25)
 		:age(age)
 		{
+			motto = new(nothrow) string("My motto!");
 			name = nameNew;
 			cout << "Created " << name << " " << age << endl;
+		}
+
+		~Human(){
+			if (motto != nullptr){
+				delete motto;
+				cout << name << " left" << endl;
+			}
 		}
 
 		void SetAge(int newAge){
@@ -65,6 +74,9 @@ int main()
 	woman->IntroduceSelf();
 	newMan.IntroduceSelf();
 	DiMan.IntroduceSelf();
+
+	cout << "Hello for every one!!!" << endl;
+	cout << endl;
 
 	delete man;
 	delete woman;
