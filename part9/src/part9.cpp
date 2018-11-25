@@ -88,6 +88,30 @@ class CopyStringError{
 		}
 };
 
+
+class President{
+private:
+	President() {};
+	President(const President&);
+	const President& operator=(const President&);
+
+	string name;
+
+public:
+	static President& GetInstanse(){
+		static President singlePresident;
+		return singlePresident;
+	}
+
+	void SetName(string nName){
+		name = nName;
+	}
+
+	string GetName(){
+		return name;
+	}
+};
+
 void copyInParam(CopyStringError str){
 	cout << str.getMyString() << " from copyInParam " << endl;
 }
@@ -119,6 +143,14 @@ int main()
 	CopyStringError objMyStr = CopyStringError("Hello");
 	copyInParam(objMyStr);  // There was executed destructor CopyStringError
 	cout << objMyStr.getMyString() << " from main() " << endl;  // <<<---- Error out!! expected "Hello" if not copying constructor
+	cout << "--------------------------------" << endl;
+
+	// Singleton
+	cout << "--------------------------------" << endl;
+	President& presid = President::GetInstanse();
+	presid.SetName("New");
+	cout << presid.GetName() << endl;
+	cout << President::GetInstanse().GetName() << endl;
 	cout << "--------------------------------" << endl;
 
 	return 0;
