@@ -71,8 +71,15 @@ class CopyStringError{
 			strcpy(myString, str); // because str is constant but myString is not
 		}
 
+		CopyStringError(const CopyStringError &str){  // copying constructor
+
+			cout << "Copying constructor " << str.myString << endl;
+			myString = new char[strlen(str.myString) + 1];
+			strcpy(myString, str.myString); // because str is constant but myString is not
+		}
+
 		~CopyStringError(){
-			cout << "destructor" << endl;
+			cout << "destructor CopyStringError" << endl;
 			delete[] myString;
 		}
 
@@ -110,8 +117,8 @@ int main()
 	cout << endl;
 	cout << "--------------------------------" << endl;
 	CopyStringError objMyStr = CopyStringError("Hello");
-	copyInParam(objMyStr);
-	cout << objMyStr.getMyString() << " from main() " << endl;  // <<<---- Error out!! expected "Hello"
+	copyInParam(objMyStr);  // There was executed destructor CopyStringError
+	cout << objMyStr.getMyString() << " from main() " << endl;  // <<<---- Error out!! expected "Hello" if not copying constructor
 	cout << "--------------------------------" << endl;
 
 	return 0;
