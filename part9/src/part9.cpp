@@ -7,6 +7,7 @@
 //============================================================================
 
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 
@@ -59,6 +60,30 @@ class Human{
 
 };
 
+class CopyStringError{
+	public:
+		char* myString;
+
+		CopyStringError(const char* str){
+
+			cout << str << endl;
+			myString = new char[strlen(str) + 1];
+			strcpy(myString, str); // because str is constant but myString is not
+		}
+
+		~CopyStringError(){
+			cout << "destructor" << endl;
+			delete[] myString;
+		}
+
+		const char* getMyString(){
+			return myString;
+		}
+};
+
+void copyInParam(CopyStringError str){
+	cout << str.getMyString() << " from copyInParam " << endl;
+}
 
 int main()
 {
@@ -80,6 +105,14 @@ int main()
 
 	delete man;
 	delete woman;
+
+	// class CopyStringError
+	cout << endl;
+	cout << "--------------------------------" << endl;
+	CopyStringError objMyStr = CopyStringError("Hello");
+	copyInParam(objMyStr);
+	cout << objMyStr.getMyString() << " from main() " << endl;  // <<<---- Error out!! expected "Hello"
+	cout << "--------------------------------" << endl;
 
 	return 0;
 }
