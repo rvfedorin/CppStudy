@@ -115,6 +115,25 @@ public:
 	}
 };
 
+
+class Circle{
+	const float pi = 3.14;
+	float radius;
+
+public:
+	Circle(float r){
+		radius = r;
+	}
+
+	float Area(){
+		return pi * radius * radius;
+	}
+
+	float Perimeter(){
+		return 2 * pi * radius;
+	}
+
+};
 void copyInParam(CopyStringError str){
 	cout << str.getMyString() << " from copyInParam " << endl;
 	cout << str.myString << " from copyInParam directly" << endl;
@@ -155,6 +174,10 @@ int main()
 	presid.SetName("New");
 	cout << presid.GetName() << endl;
 	cout << President::GetInstanse().GetName() << endl;
+	cout << "--------------------------------" << endl;
+	Circle circ(12);
+	cout << "Площадь: " << circ.Area() << endl;
+	cout << "Периметр: " << circ.Perimeter() << endl;
 	cout << "--------------------------------" << endl;
 
 	return 0;
