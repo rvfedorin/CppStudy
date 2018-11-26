@@ -61,8 +61,11 @@ class Human{
 };
 
 class CopyStringError{
+	char* myString;
+	friend void copyInParam(CopyStringError str);
+
 	public:
-		char* myString;
+
 
 		CopyStringError(const char* str){
 
@@ -114,6 +117,7 @@ public:
 
 void copyInParam(CopyStringError str){
 	cout << str.getMyString() << " from copyInParam " << endl;
+	cout << str.myString << " from copyInParam directly" << endl;
 }
 
 int main()
