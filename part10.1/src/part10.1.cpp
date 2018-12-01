@@ -13,6 +13,8 @@ class Fish{
 protected:
 	bool isFreshWatreFish;
 
+	Fish(bool water): isFreshWatreFish(water) {}
+
 public:
 	void Swim(){
 		if (isFreshWatreFish){
@@ -25,15 +27,22 @@ public:
 
 class Carp: public Fish{
 public:
-	Carp(){
-		isFreshWatreFish = true;
+	Carp(): Fish(true){
+		cout << "Пойман карп." << endl;
 	}
 };
 
 class Tuna: public Fish{
+	int m;
 public:
-	Tuna(){
-		isFreshWatreFish = false;
+	Tuna(): Fish(false){
+		cout << "Пойман тунец." << endl;
+		m = 0;
+	}
+
+	Tuna(int i): Fish(false){
+		m = i;
+		cout << "Пойман тунец." << endl;
 	}
 };
 
