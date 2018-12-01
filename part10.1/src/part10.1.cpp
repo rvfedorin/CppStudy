@@ -10,9 +10,10 @@
 using namespace std;
 
 class Fish{
-public:
+protected:
 	bool isFreshWatreFish;
 
+public:
 	void Swim(){
 		if (isFreshWatreFish){
 			cout << "Пресноводный" << endl;
@@ -45,6 +46,7 @@ int main() {
 	myLanch.Swim();
 	cout << "Ужин: ";
 	myDinner.Swim();
+//	myDinner.isFreshWatreFish = false; <<--- is protected!!!
 
 
 	return 0;
