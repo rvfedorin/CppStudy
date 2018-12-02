@@ -10,6 +10,7 @@
 using namespace std;
 
 class Fish{
+
 protected:
 	bool isFreshWatreFish;
 
@@ -23,6 +24,13 @@ public:
 			cout << "Морской" << endl;
 		}
 	}
+
+	void Swim(bool speed){
+		if (speed) {
+			cout << "Очень быстро поплыл!!!" << endl;
+		}
+	}
+
 };
 
 class Carp: public Fish{
@@ -33,28 +41,38 @@ public:
 };
 
 class Tuna: public Fish{
-	int m;
+	int weight;
 public:
+	using Fish::Swim;
 	Tuna(): Fish(false){
 		cout << "Пойман тунец." << endl;
-		m = 0;
+		weight = 0;
 	}
 
-	Tuna(int i): Fish(false){
-		m = i;
-		cout << "Пойман тунец." << endl;
+	Tuna(int mass): Fish(false){
+		weight = mass;
+		cout << "Пойман тунец массой: " << weight << endl;
+	}
+
+	void Swim(){
+		cout << "Тунец быстро плавает." << endl;
 	}
 };
 
 int main() {
+
 	Carp myLanch;
-	Tuna myDinner;
+	Tuna myDinner(123);
 
 	cout << "Моя еда:" << endl;
 	cout << "Обед: ";
 	myLanch.Swim();
 	cout << "Ужин: ";
+	myDinner.Fish::Swim();
+
 	myDinner.Swim();
+	myDinner.Swim(true);
+
 //	myDinner.isFreshWatreFish = false; <<--- is protected!!!
 
 
