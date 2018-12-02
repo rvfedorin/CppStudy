@@ -12,6 +12,14 @@ using namespace std;
 
 class Fish{
 public:
+	Fish(){
+		cout << "Саздаём Fish " << endl;
+	}
+
+	virtual ~Fish(){
+		cout << "Удаляем Fish " << endl;
+	}
+
 	virtual void Swim(){
 		cout << "Рыба плавает." << endl;
 	}
