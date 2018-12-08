@@ -29,7 +29,7 @@ public:
 
 class Carp: public Fish{
 public:
-	void Swim(){
+	void Swim() override {
 		cout << "Карп плавает медленно." << endl;
 	}
 };
