@@ -20,9 +20,11 @@ public:
 		cout << "Удаляем Fish " << endl;
 	}
 
-	virtual void Swim(){
-		cout << "Рыба плавает." << endl;
-	}
+//	virtual void Swim(){
+//		cout << "Рыба плавает." << endl;
+//	}
+
+	virtual void Swim() = 0;
 };
 
 class Carp: public Fish{
