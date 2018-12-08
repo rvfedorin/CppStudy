@@ -27,9 +27,9 @@ public:
 	virtual void Swim() = 0;
 };
 
-class Carp: public Fish{
+class Carp final: public Fish{
 public:
-	void Swim() override {
+	void Swim() override final {
 		cout << "Карп плавает медленно." << endl;
 	}
 };
