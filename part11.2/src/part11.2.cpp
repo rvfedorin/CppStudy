@@ -1,9 +1,9 @@
 //============================================================================
 // Name        : 2.cpp
-// Author      : 
+// Author      : Roman V. Fedorin
 // Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Copyright   : Free
+// Description : Ansi-style
 //============================================================================
 
 #include <iostream>
